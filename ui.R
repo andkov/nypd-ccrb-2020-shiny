@@ -6,9 +6,21 @@
 #
 #    http://shiny.rstudio.com/
 #
-
+# ---- load-libraies -----------------------------------------------------------
 library(shiny)
+library(tidyverse)
+library(TabularManifest)
 library(shinythemes)
+
+# ---- declare-globals ---------------------------------------------------------
+
+path_input <-  "./data-unshared/raw/CCRB-Complaint-Data_202007271729/allegations_202007271729.csv"
+
+
+# ---- load-data ---------------------------------------------------------------
+
+ds0 <- read_csv(path_input)
+
 
 # ---- UI-parts ----------------------------------------------------------------
 

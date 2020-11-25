@@ -16,7 +16,7 @@ library(TabularManifest)
 
 # ---- declare-globals ---------------------------------------------------------
 
-path_input <-  "../nypd-ccrb-2020/data-unshared/raw/CCRB-Complaint-Data_202007271729/allegations_202007271729.csv"
+path_input <-  "./data-unshared/raw/CCRB-Complaint-Data_202007271729/allegations_202007271729.csv"
 
 
 # ---- load-data ---------------------------------------------------------------

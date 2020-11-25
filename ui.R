@@ -8,6 +8,49 @@
 #
 
 library(shiny)
+library(shinythemes)
+
+# ---- UI-parts ----------------------------------------------------------------
 
 
-shinyUI()
+
+
+
+
+
+
+# ---- Main-UI -----------------------------------------------------------------
+
+shinyUI(
+  navbarPage(
+    "NYPD-CCRB"
+    ,theme = shinytheme("slate")
+    ,tabPanel(
+      "Data Explorer"
+      ,sidebarLayout(
+        sidebarPanel(
+          selectInput(
+            inputId  = "univariate_variable"
+            ,label = "Choose Variable"
+            ,choices = names(ds0)
+            )
+          )
+        ,mainPanel(
+          plotOutput("plot")
+
+          )
+        )
+      )
+    )
+
+
+
+
+
+
+
+
+
+
+
+)

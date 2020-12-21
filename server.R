@@ -29,32 +29,29 @@ ds0 <- read_csv(path_input)
 
 shinyServer(function(input, output, session) {
 
-  graph <- reactive(
-    {
-      var <- input$univariate_variable
-
-      d <- ds0 %>% select(all_of(var))
-
-
-      if(typeof(pull(d)) %in% c("double","integer")){
-        g <- d %>% TabularManifest::histogram_continuous(var)
-      } else {
-        g <- d %>% TabularManifest::histogram_discrete(var)
-      }
-
-      return(g)
-    }
-  )
-
-  output$plot <- renderPlot({graph()})
+  precinct_summary <- reactive({
+    ds0 %>% filter(precinct == input$precinct_select) %>%
+      summarise(
+        allegations = n()
+        ,substantiated = sum(str_detect(board_disposition,"Substantiated"))
+        ,exonerated = sum(str_detect(board_disposition,"Exonerated"))
+        ,unsubstantiated  = sum(str_detect(board_disposition,"Unsubstantiated"))
+        ,officers_with_complaints = n_distinct(first_name,last_name)
+      )
+  })
 
 
+  output$allegations_info <- renderInfoBox({
+    infoBox(
+      title = "Allegations"
+      ,value = precinct_summary()$allegations
+      ,icon = icon("crosshairs")
+    )
+  })
 
 
-
-
-
-
+  #example
+  # output$table <- renderTable({precinct_summary()$allegations})
 
 
 

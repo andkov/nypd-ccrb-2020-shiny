@@ -9,8 +9,9 @@
 # ---- load-libraies -----------------------------------------------------------
 library(shiny)
 library(tidyverse)
-library(TabularManifest)
+library(shinydashboard)
 library(shinythemes)
+
 
 # ---- declare-globals ---------------------------------------------------------
 
@@ -24,7 +25,28 @@ ds0 <- read_csv(path_input)
 
 # ---- UI-parts ----------------------------------------------------------------
 
+# HEADER
+header <- dashboardHeader(
+  title = "NYPD-CCRB"
+)
 
+# SIDEBAR
+sidebar <- dashboardSidebar(
+  selectInput(
+    inputId = "precinct_select"
+    ,label  = "Choose Precint"
+    ,choices = sort(unique(ds0$precinct, na.rm = TRUE))
+  )
+)
+
+# BODY
+body <- dashboardBody(
+  fluidRow(
+    infoBoxOutput("allegations_info")
+    ,infoBoxOutput("substantiated_info")
+  )
+
+)
 
 
 
@@ -33,36 +55,4 @@ ds0 <- read_csv(path_input)
 
 # ---- Main-UI -----------------------------------------------------------------
 
-shinyUI(
-  navbarPage(
-    "NYPD-CCRB"
-    ,theme = shinytheme("slate")
-    ,tabPanel(
-      "Data Explorer"
-      ,sidebarLayout(
-        sidebarPanel(
-          selectInput(
-            inputId  = "univariate_variable"
-            ,label = "Choose Variable"
-            ,choices = names(ds0)
-            )
-          )
-        ,mainPanel(
-          plotOutput("plot")
-
-          )
-        )
-      )
-    )
-
-
-
-
-
-
-
-
-
-
-
-)
+dashboardPage(header,sidebar,body)

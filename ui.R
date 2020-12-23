@@ -11,7 +11,7 @@ library(shiny)
 library(tidyverse)
 library(shinydashboard)
 library(shinythemes)
-
+library(leaflet)
 
 # ---- declare-globals ---------------------------------------------------------
 
@@ -31,20 +31,36 @@ header <- dashboardHeader(
 )
 
 # SIDEBAR
-sidebar <- dashboardSidebar(
-  selectInput(
-    inputId = "precinct_select"
-    ,label  = "Choose Precint"
-    ,choices = sort(unique(ds0$precinct, na.rm = TRUE))
-  )
-)
+# sidebar <- dashboardSidebar(
+#   selectInput(
+#     inputId = "precinct_select"
+#     ,label  = "Choose Precint"
+#     ,choices = sort(unique(ds0$precinct, na.rm = TRUE))
+#   )
+# )
+
+  sidebar <- dashboardSidebar(disable = TRUE)
 
 # BODY
 body <- dashboardBody(
   fluidRow(
     infoBoxOutput("allegations_info")
-    ,infoBoxOutput("substantiated_info")
+    ,infoBoxOutput("complaint_info")
+    ,infoBoxOutput("officers_complaint_info")
   )
+  ,fluidRow(
+    box(
+      leafletOutput("precinct_map", height = 500)
+      ,width = 12
+    )
+  )
+  ,fluidRow(
+    box(
+      textOutput("map_text")
+    )
+  )
+
+
 
 )
 

@@ -43,10 +43,18 @@ header <- dashboardHeader(
 
 # BODY
 body <- dashboardBody(
-  fluidRow(
-    infoBoxOutput("allegations_info")
-    ,infoBoxOutput("complaint_info")
-    ,infoBoxOutput("officers_complaint_info")
+  shinyjs::useShinyjs()
+  ,fluidRow(
+    column(
+      width = 12
+      ,align = "center"
+      ,tags$h2(id = "title_placeholder")
+    )
+  )
+  ,fluidRow(
+      infoBoxOutput("allegations_info")
+      ,infoBoxOutput("complaint_info")
+      ,infoBoxOutput("officers_complaint_info")
   )
   ,fluidRow(
     box(

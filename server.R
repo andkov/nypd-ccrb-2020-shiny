@@ -101,7 +101,8 @@ shinyServer(function(input, output, session) {
   })
 
 
-  output$map_text <- reactive({
+  output$map_text <- renderText({
+
     click <- input$precinct_map_shape_click
 
     if(is.null(click)){
@@ -115,6 +116,14 @@ shinyServer(function(input, output, session) {
   })
 
 
+  observeEvent(input$precinct_map_shape_click, {
+
+    click <- input$precinct_map_shape_click
+
+    shinyjs::html(id = "title_placeholder", html = paste0("Precicnt:", click$id))
+
+
+  })
 
 
 })

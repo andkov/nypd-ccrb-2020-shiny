@@ -38,3 +38,7 @@ ds0 <- read_csv(path_input)
 
 
 ds1 <- ds0 %>% select(precinct_2020,all_of(census_race_labels))
+
+# ---- save-data ---------------------------------------------------------------
+
+ds1 %>% write_rds("./data-public/app-ready-population-data.rds", compress = "gz")

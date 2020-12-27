@@ -121,7 +121,7 @@ shinyServer(function(input, output, session) {
 
     click <- input$precinct_map_shape_click
 
-    shinyjs::html(id = "title_placeholder", html = paste0("Precicnt:", click$id))
+    shinyjs::html(id = "title_placeholder", html = paste0("Precinct:", click$id))
 
 
   })

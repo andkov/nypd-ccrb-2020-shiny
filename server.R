@@ -13,6 +13,7 @@ cat("\f") # clear console when working in RStudio
 library(shiny)
 library(tidyverse)
 library(leaflet)
+library(sf)
 
 # ---- declare-globals ---------------------------------------------------------
 
@@ -37,7 +38,7 @@ shinyServer(function(input, output, session) {
     map_click <- input$precinct_map_shape_click
 
     if(is.null(map_click)){
-      precicnt_filter <- 0
+      precicnt_filter <- 1
     } else {
       precicnt_filter <- map_click$id
     }
@@ -87,7 +88,7 @@ shinyServer(function(input, output, session) {
       addPolygons(
         color = "black"
         ,weight = 1
-        ,fillOpacity = 0.8
+        ,fillOpacity = 0.2
         ,highlightOptions = highlightOptions(
           color = "white"
           ,weight = 2

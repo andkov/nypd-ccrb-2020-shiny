@@ -48,7 +48,7 @@ body <- dashboardBody(
     column(
       width = 12
       ,align = "center"
-      ,tags$h2(id = "title_placeholder")
+      ,tags$h2(id = "title_placeholder", "Precinct: 1")
     )
   )
   ,fluidRow(

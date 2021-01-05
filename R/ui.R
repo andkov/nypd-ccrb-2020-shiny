@@ -1,4 +1,8 @@
-#
+#' @import shiny
+#' @import shinydashboard
+#'
+#'
+#'
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
 #
@@ -7,11 +11,11 @@
 #    http://shiny.rstudio.com/
 #
 # ---- load-libraies -----------------------------------------------------------
-library(shiny)
-library(tidyverse)
-library(shinydashboard)
-library(shinythemes)
-library(leaflet)
+# library(shiny)
+# library(tidyverse)
+# library(shinydashboard)
+# library(shinythemes)
+# library(leaflet)
 
 # ---- declare-globals ---------------------------------------------------------
 
@@ -20,13 +24,13 @@ path_input <-  "./data-unshared/raw/CCRB-Complaint-Data_202007271729/allegations
 
 # ---- load-data ---------------------------------------------------------------
 
-ds0 <- read_csv(path_input)
+ds0 <- readr::read_csv(path_input)
 
 
 # ---- UI-parts ----------------------------------------------------------------
 
 # HEADER
-header <- dashboardHeader(
+header <- shinydashboard::dashboardHeader(
   title = "NYPD-CCRB"
 )
 
@@ -39,10 +43,10 @@ header <- dashboardHeader(
 #   )
 # )
 
-  sidebar <- dashboardSidebar(disable = TRUE)
+  sidebar <- shinydashboard::dashboardSidebar(disable = TRUE)
 
 # BODY
-body <- dashboardBody(
+body <- shinydashboard::dashboardBody(
   shinyjs::useShinyjs()
   ,fluidRow(
     column(
@@ -58,7 +62,7 @@ body <- dashboardBody(
   )
   ,fluidRow(
     box(
-      leafletOutput("precinct_map", height = 500)
+      leaflet::leafletOutput("precinct_map", height = 500)
       ,width = 12
     )
   )

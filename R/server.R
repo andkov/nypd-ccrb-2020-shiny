@@ -1,7 +1,9 @@
-rm(list=ls(all=TRUE)) #Clear the memory of variables from previous run.
-cat("\f") # clear console when working in RStudio
-
-
+#'
+#' @import shiny
+#' @importfrom readr read_csv
+#' @import dplyr
+#' @import leaflet
+#' @import sf
 # This is the server logic of a Shiny web application. You can run the
 # application by clicking 'Run App' above.
 #
@@ -10,10 +12,12 @@ cat("\f") # clear console when working in RStudio
 #    http://shiny.rstudio.com/
 #
 # ---- load-libraies -----------------------------------------------------------
-library(shiny)
-library(tidyverse)
-library(leaflet)
-library(sf)
+# library(shiny)
+# library(tidyverse)
+# library(leaflet)
+# library(sf)
+
+
 
 # ---- declare-globals ---------------------------------------------------------
 
@@ -23,16 +27,14 @@ path_geojson <- "./data-unshared/raw/police_precincts.geojson"
 
 # ---- load-data ---------------------------------------------------------------
 
-ds0 <- read_csv(path_input)
+ds0 <- readr::read_csv(path_input)
 
 precinct_map <- geojsonsf::geojson_sf(path_geojson)
 
 
 # ---- server ------------------------------------------------------------------
 
-
-shinyServer(function(input, output, session) {
-
+app_server <- function(input,output,session){
   precinct_summary <- reactive({
 
     map_click <- input$precinct_map_shape_click
@@ -127,7 +129,7 @@ shinyServer(function(input, output, session) {
   })
 
 
-})
+}
 
 
 

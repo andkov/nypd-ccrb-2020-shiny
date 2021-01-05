@@ -78,4 +78,6 @@ body <- dashboardBody(
 
 
 # ---- Main-UI -----------------------------------------------------------------
-ui <- dashboardPage(header,sidebar,body)
+ui <- function(){
+  dashboardPage(header,sidebar,body)
+}

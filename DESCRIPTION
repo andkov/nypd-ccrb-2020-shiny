@@ -14,7 +14,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: 
+Depends: 
+    R (>= 2.10),
     shiny,
     dplyr,
     readr,
@@ -23,5 +24,3 @@ Imports:
     leaflet,
     stringr,
     shinyjs
-Depends: 
-    R (>= 2.10)

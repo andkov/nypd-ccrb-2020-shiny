@@ -1,5 +1,6 @@
 #' Run the Shiny Application
 #'
+#' @export
 #' @importFrom shiny shinyApp
 
 

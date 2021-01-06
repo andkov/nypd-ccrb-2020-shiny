@@ -1,3 +1,6 @@
+#TODO: UPDATE THIS FILE TO MEET PACKAGE REQUIRMENTS
+# CURRENTLY NOT USING THIS DATA 1/5/2020
+
 # This script reads NYPD Precinct data from
 # https://johnkeefe.net/nyc-police-precinct-and-census-data
 

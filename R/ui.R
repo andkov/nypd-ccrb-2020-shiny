@@ -1,5 +1,5 @@
 #' @import shiny
-#' @import shinydashboard
+#' @importFrom shinydashboard infoBoxOutput
 #' @importFrom shinyjs useShinyjs
 #'
 #'
@@ -48,18 +48,18 @@ body <- shinydashboard::dashboardBody(
     )
   )
   ,fluidRow(
-      infoBoxOutput("allegations_info")
-      ,infoBoxOutput("complaint_info")
-      ,infoBoxOutput("officers_complaint_info")
+    shinydashboard::infoBoxOutput("allegations_info")
+    ,shinydashboard::infoBoxOutput("complaint_info")
+    ,shinydashboard::infoBoxOutput("officers_complaint_info")
   )
   ,fluidRow(
-    box(
+    shinydashboard::box(
       leaflet::leafletOutput("precinct_map", height = 500)
       ,width = 12
     )
   )
   ,fluidRow(
-    box(
+    shinydashboard::box(
       textOutput("map_text")
     )
   )
@@ -74,6 +74,6 @@ body <- shinydashboard::dashboardBody(
 
 
 # ---- Main-UI -----------------------------------------------------------------
-ui <- function(){
-  dashboardPage(header,sidebar,body)
+app_ui <- function(){
+  shinydashboard::dashboardPage(header,sidebar,body)
 }

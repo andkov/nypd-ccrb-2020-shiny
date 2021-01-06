@@ -6,5 +6,5 @@
 
 
 run_app <- function(){
-  shinyApp(ui = ui, server = app_server)
+  shinyApp(ui = app_ui, server = app_server)
 }

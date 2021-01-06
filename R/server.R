@@ -4,7 +4,6 @@
 #' @import leaflet
 #' @import sf
 #' @importFrom stringr str_detect
-#' @importfrom readr read_csv
 #' @importFrom shinyjs html
 
 # TODO: Clean up @imports
@@ -22,8 +21,8 @@ app_server <- function(input,output,session){
       precicnt_filter <- map_click$id
     }
     #TODO: Move to function file
-    allegations %>% filter(precinct == precicnt_filter) %>%
-      summarise(
+    allegations %>% dplyr::filter(precinct == precicnt_filter) %>%
+      dplyr::summarise(
         allegations = n()
         ,complaints = n_distinct(complaint_id)
         ,substantiated = sum(str_detect(board_disposition,"Substantiated"))
@@ -34,8 +33,8 @@ app_server <- function(input,output,session){
   })
 
 
-  output$allegations_info <- renderInfoBox({
-    infoBox(
+  output$allegations_info <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
       title = "Allegations"
       ,value = precinct_summary()$allegations
       ,icon = icon("crosshairs")
@@ -43,8 +42,8 @@ app_server <- function(input,output,session){
     )
   })
 
-  output$complaint_info <- renderInfoBox({
-    infoBox(
+  output$complaint_info <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
       title = "Complaints"
       ,value = precinct_summary()$complaints
       ,icon = icon("crosshairs")
@@ -52,8 +51,8 @@ app_server <- function(input,output,session){
     )
   })
 
-  output$officers_complaint_info <- renderInfoBox({
-    infoBox(
+  output$officers_complaint_info <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
       title = "Officers with Complaints"
       ,value = precinct_summary()$officers_with_complaints
       ,icon = icon("user")
@@ -61,10 +60,10 @@ app_server <- function(input,output,session){
     )
   })
 
-  output$precinct_map <- renderLeaflet({
-    leaflet(data = precinct_map) %>%
-      addTiles() %>%
-      addPolygons(
+  output$precinct_map <- leaflet::renderLeaflet({
+    leaflet::leaflet(data = precinct_map) %>%
+      leaflet::addTiles() %>%
+      leaflet::addPolygons(
         color = "black"
         ,weight = 1
         ,fillOpacity = 0.2

@@ -27,9 +27,9 @@ path_geojson <- "./data-unshared/raw/police_precincts.geojson"
 
 # ---- load-data ---------------------------------------------------------------
 
-ds0 <- readr::read_csv(path_input)
+# ds0 <- readr::read_csv(path_input)
 
-precinct_map <- precinct_map
+# precinct_map <- precinct_map
 
 
 # ---- server ------------------------------------------------------------------
@@ -44,8 +44,8 @@ app_server <- function(input,output,session){
     } else {
       precicnt_filter <- map_click$id
     }
-
-    ds0 %>% filter(precinct == precicnt_filter) %>%
+    #TODO: Move to function file
+    allegations %>% filter(precinct == precicnt_filter) %>%
       summarise(
         allegations = n()
         ,complaints = n_distinct(complaint_id)

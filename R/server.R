@@ -1,36 +1,12 @@
 #'
 #' @import shiny
-#' @importfrom readr read_csv
 #' @import dplyr
 #' @import leaflet
 #' @import sf
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-# ---- load-libraies -----------------------------------------------------------
-# library(shiny)
-# library(tidyverse)
-# library(leaflet)
-# library(sf)
+#' @importFrom stringr str_detect
+#' @importfrom readr read_csv
 
-
-
-# ---- declare-globals ---------------------------------------------------------
-
-path_input <-  "./data-unshared/raw/CCRB-Complaint-Data_202007271729/allegations_202007271729.csv"
-
-path_geojson <- "./data-unshared/raw/police_precincts.geojson"
-
-# ---- load-data ---------------------------------------------------------------
-
-# ds0 <- readr::read_csv(path_input)
-
-# precinct_map <- precinct_map
-
+# TODO: Clean up @imports
 
 # ---- server ------------------------------------------------------------------
 

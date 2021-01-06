@@ -37,5 +37,13 @@ vignettes/*.pdf
 
 
 
-data-unshared/*
-rsconnect/shinyapps.io/kyleb/nypd-ccrb-2020-shiny.dcf
+
+rsconnect/*
+
+# Data Files
+
+data-raw/*.csv
+data-raw/*.geojson
+data-raw/*/
+
+

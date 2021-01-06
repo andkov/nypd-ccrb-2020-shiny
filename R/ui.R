@@ -1,5 +1,6 @@
 #' @import shiny
 #' @import shinydashboard
+#' @importFrom shinyjs useShinyjs
 #'
 #'
 #'

@@ -29,7 +29,7 @@ path_geojson <- "./data-unshared/raw/police_precincts.geojson"
 
 ds0 <- readr::read_csv(path_input)
 
-precinct_map <- geojsonsf::geojson_sf(path_geojson)
+precinct_map <- precinct_map
 
 
 # ---- server ------------------------------------------------------------------

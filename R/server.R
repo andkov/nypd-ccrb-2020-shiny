@@ -53,22 +53,7 @@ app_server <- function(input,output,session){
   })
 
   output$precinct_map <- leaflet::renderLeaflet({
-    leaflet::leaflet(data = precinct_map) %>%
-      leaflet::addTiles() %>%
-      leaflet::addPolygons(
-        color = "black"
-        ,weight = 1
-        ,fillOpacity = 0.2
-        ,highlightOptions = highlightOptions(
-          color = "white"
-          ,weight = 2
-          ,bringToFront = TRUE
-        )
-        ,label = ~glue::glue(
-          "Precinct: {precinct}"
-          )
-        ,layerId = ~precinct
-      )
+    create_precinct_map(precinct_map)
   })
 
 

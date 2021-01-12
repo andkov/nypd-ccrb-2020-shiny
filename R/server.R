@@ -52,6 +52,35 @@ app_server <- function(input,output,session){
     )
   })
 
+  output$substantiated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Substantiated"
+      ,value = precinct_summary()$substantiated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+  output$exonerated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Exonerated"
+      ,value = precinct_summary()$exonerated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+  output$unsubstantiated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Unsubstantiated"
+      ,value = precinct_summary()$unsubstantiated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+
+
   output$precinct_map <- leaflet::renderLeaflet({
     create_precinct_map(precinct_map)
   })

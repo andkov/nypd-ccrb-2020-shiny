@@ -53,6 +53,11 @@ body <- shinydashboard::dashboardBody(
     ,shinydashboard::infoBoxOutput("officers_complaint_info")
   )
   ,fluidRow(
+    shinydashboard::infoBoxOutput("substantiated")
+    ,shinydashboard::infoBoxOutput("exonerated")
+    ,shinydashboard::infoBoxOutput("unsubstantiated")
+  )
+  ,fluidRow(
     shinydashboard::box(
       leaflet::leafletOutput("precinct_map", height = 500)
       ,width = 12

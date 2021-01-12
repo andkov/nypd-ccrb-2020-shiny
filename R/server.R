@@ -16,20 +16,12 @@ app_server <- function(input,output,session){
     map_click <- input$precinct_map_shape_click
 
     if(is.null(map_click)){
-      precicnt_filter <- 1
+      precinct_filter <- 1
     } else {
-      precicnt_filter <- map_click$id
+      precinct_filter <- map_click$id
     }
-    #TODO: Move to function file
-    allegations %>% dplyr::filter(precinct == precicnt_filter) %>%
-      dplyr::summarise(
-        allegations = n()
-        ,complaints = n_distinct(complaint_id)
-        ,substantiated = sum(str_detect(board_disposition,"Substantiated"))
-        ,exonerated = sum(str_detect(board_disposition,"Exonerated"))
-        ,unsubstantiated  = sum(str_detect(board_disposition,"Unsubstantiated"))
-        ,officers_with_complaints = n_distinct(first_name,last_name)
-      )
+
+    create_precinct_summary(allegations, precinct_filter = precinct_filter)
   })
 
 
@@ -60,23 +52,37 @@ app_server <- function(input,output,session){
     )
   })
 
+  output$substantiated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Substantiated"
+      ,value = precinct_summary()$substantiated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+  output$exonerated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Exonerated"
+      ,value = precinct_summary()$exonerated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+  output$unsubstantiated <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Unsubstantiated"
+      ,value = precinct_summary()$unsubstantiated
+      ,icon = icon("crosshairs")
+      ,color = "blue"
+    )
+  })
+
+
+
   output$precinct_map <- leaflet::renderLeaflet({
-    leaflet::leaflet(data = precinct_map) %>%
-      leaflet::addTiles() %>%
-      leaflet::addPolygons(
-        color = "black"
-        ,weight = 1
-        ,fillOpacity = 0.2
-        ,highlightOptions = highlightOptions(
-          color = "white"
-          ,weight = 2
-          ,bringToFront = TRUE
-        )
-        ,label = ~glue::glue(
-          "Precinct: {precinct}"
-          )
-        ,layerId = ~precinct
-      )
+    create_precinct_map(precinct_map)
   })
 
 

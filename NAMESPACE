@@ -2,11 +2,13 @@
 
 export(create_precinct_map)
 export(create_precinct_summary)
+export(make_bi_bar_graph)
 export(run_app)
 import(dplyr)
 import(leaflet)
 import(sf)
 import(shiny)
+importFrom(ggplot2,ggplot)
 importFrom(shiny,shinyApp)
 importFrom(shinydashboard,infoBoxOutput)
 importFrom(shinyjs,html)

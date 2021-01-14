@@ -27,50 +27,73 @@ header <- shinydashboard::dashboardHeader(
 )
 
 # SIDEBAR
-# sidebar <- dashboardSidebar(
-#   selectInput(
-#     inputId = "precinct_select"
-#     ,label  = "Choose Precint"
-#     ,choices = sort(unique(ds0$precinct, na.rm = TRUE))
-#   )
-# )
+sidebar <- shinydashboard::dashboardSidebar(
+  shinydashboard::sidebarMenu(
+    shinydashboard::menuItem(
+      text = "Map"
+      ,tabName = "map"
+      ,icon = icon("map")
+      ,selected = TRUE
+      )
+    ,shinydashboard::menuItem(
+      text = "Reports"
+      ,tabName = "reports"
+      ,icon = icon("folder")
+    )
+    ,shinydashboard::menuItem(
+      text = "Graphs"
+      ,tabName = "graphs"
+      ,icon = icon("chart-line")
+    )
+  )
+)
 
-  sidebar <- shinydashboard::dashboardSidebar(disable = TRUE)
+# sidebar <- shinydashboard::dashboardSidebar(disable = TRUE)
 
 # BODY
 body <- shinydashboard::dashboardBody(
   shinyjs::useShinyjs()
-  ,fluidRow(
-    column(
-      width = 12
-      ,align = "center"
-      ,tags$h2(id = "title_placeholder", "Precinct: 1")
+  ,shinydashboard::tabItems(
+    shinydashboard::tabItem(
+      tabName = "map"
+      ,fluidRow(
+        column(
+          width = 12
+          ,align = "center"
+          ,tags$h2(id = "title_placeholder", "Precinct: 1")
+        )
+      )
+      ,fluidRow(
+        shinydashboard::infoBoxOutput("allegations_info")
+        ,shinydashboard::infoBoxOutput("complaint_info")
+        ,shinydashboard::infoBoxOutput("officers_complaint_info")
+      )
+      ,fluidRow(
+        shinydashboard::infoBoxOutput("substantiated")
+        ,shinydashboard::infoBoxOutput("exonerated")
+        ,shinydashboard::infoBoxOutput("unsubstantiated")
+      )
+      ,fluidRow(
+        shinydashboard::box(
+          leaflet::leafletOutput("precinct_map", height = 500)
+          ,width = 12
+        )
+      )
+      ,fluidRow(
+        shinydashboard::box(
+          textOutput("map_text")
+        )
+      )
+    )
+    ,shinydashboard::tabItem(
+      tabName = "reports"
+      ,reports_ui("reports1")
+    )
+    ,shinydashboard::tabItem(
+      tabName = "graphs"
+      ,h2("Nothing Here Yet")
     )
   )
-  ,fluidRow(
-    shinydashboard::infoBoxOutput("allegations_info")
-    ,shinydashboard::infoBoxOutput("complaint_info")
-    ,shinydashboard::infoBoxOutput("officers_complaint_info")
-  )
-  ,fluidRow(
-    shinydashboard::infoBoxOutput("substantiated")
-    ,shinydashboard::infoBoxOutput("exonerated")
-    ,shinydashboard::infoBoxOutput("unsubstantiated")
-  )
-  ,fluidRow(
-    shinydashboard::box(
-      leaflet::leafletOutput("precinct_map", height = 500)
-      ,width = 12
-    )
-  )
-  ,fluidRow(
-    shinydashboard::box(
-      textOutput("map_text")
-    )
-  )
-
-
-
 )
 
 
@@ -80,5 +103,5 @@ body <- shinydashboard::dashboardBody(
 
 # ---- Main-UI -----------------------------------------------------------------
 app_ui <- function(){
-  shinydashboard::dashboardPage(header,sidebar,body)
+  shinydashboard::dashboardPage(header,sidebar,body, skin = 'black')
 }

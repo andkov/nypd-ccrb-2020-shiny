@@ -110,6 +110,7 @@ app_server <- function(input,output,session){
 
   })
 
+  reports_server("reports1")
 
 }
 

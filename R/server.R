@@ -112,6 +112,8 @@ app_server <- function(input,output,session){
 
   reports_server("reports1")
 
+  bivar_bar_server("bivar_bar_graph")
+
 }
 
 

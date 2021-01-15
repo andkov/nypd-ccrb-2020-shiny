@@ -42,8 +42,12 @@ sidebar <- shinydashboard::dashboardSidebar(
     )
     ,shinydashboard::menuItem(
       text = "Graphs"
-      ,tabName = "graphs"
       ,icon = icon("chart-line")
+      ,shinydashboard::menuSubItem(
+        text = "Bivariate Bar"
+        ,tabName = "bivariate_bar"
+        ,icon = icon("chart-bar")
+      )
     )
   )
 )
@@ -90,8 +94,8 @@ body <- shinydashboard::dashboardBody(
       ,reports_ui("reports1")
     )
     ,shinydashboard::tabItem(
-      tabName = "graphs"
-      ,h2("Nothing Here Yet")
+      tabName = "bivariate_bar"
+      ,bivar_bar_ui("bivar_bar_graph")
     )
   )
 )

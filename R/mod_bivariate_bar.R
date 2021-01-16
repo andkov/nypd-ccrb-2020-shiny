@@ -3,14 +3,14 @@
 #'
 
 select_choices <- c(
-  "rank_now"        ="rank_now"
-  ,"rank_incident"  ="rank_incident"
-  ,"mos_ethnicity"  ="mos_ethnicity"
-  ,"mos_gender"  ="mos_gender"
-  ,"mos_age_incident"  ="mos_age_incident"
-  ,"complainant_ethnicity"  ="complainant_ethnicity5"
-  ,"complainant_gender"  ="complainant_gender4"
-  ,"complainant_age_incident" = "complainant_age_incident"
+  "Rank Now"                  = "rank_now"
+  ,"Rank Incident"            = "rank_incident"
+  ,"Officer Ethnicity"        = "mos_ethnicity"
+  ,"Officer Gender"           = "mos_gender"
+  # ,"Officer Age Incident"     = "mos_age_incident"
+  ,"Complainant Ethnicity"    = "complainant_ethnicity5"
+  ,"Complainant Gender"       = "complainant_gender4"
+  # ,"Complainant Age Incident" = "complainant_age_incident"
 )
 
 

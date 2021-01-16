@@ -21,7 +21,7 @@ app_server <- function(input,output,session){
       precinct_filter <- map_click$id
     }
 
-    create_precinct_summary(allegations, precinct_filter = precinct_filter)
+    create_precinct_summary(nypd_ccrb_cleaned, precinct_filter = precinct_filter)
   })
 
 

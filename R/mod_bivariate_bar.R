@@ -57,7 +57,7 @@ bivar_bar_server <- function(id){
     output$bivar_bar_plot <- renderPlot({
 
 
-      make_bi_bar_graph(allegations, input$xvar, input$yvar)
+      make_bi_bar_graph(nypd_ccrb_cleaned, input$xvar, input$yvar)
 
 
     })

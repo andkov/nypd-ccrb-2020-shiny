@@ -26,12 +26,12 @@ bivar_bar_ui <- function(id){
           ,width  = NULL
           ,selectInput(
             NS(id,"xvar")
-            ,label = "X Variable"
+            ,label = "Group by ..."
             ,choices = select_choices
           )
           ,selectInput(
             NS(id,"yvar")
-            ,label = "y Variable"
+            ,label = "Color by ..."
             ,choices = select_choices
           )
         )

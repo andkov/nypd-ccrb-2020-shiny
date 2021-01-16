@@ -11,6 +11,9 @@ select_choices <- c(
   ,"Complainant Ethnicity"    = "complainant_ethnicity5"
   ,"Complainant Gender"       = "complainant_gender4"
   # ,"Complainant Age Incident" = "complainant_age_incident"
+  ,"Category of Complaint"    = "fado_type"
+  ,"Board Disposition"        = "disposition"
+  ,"Pentalty"                 = "penalty"
 )
 
 
@@ -26,12 +29,12 @@ bivar_bar_ui <- function(id){
           ,width  = NULL
           ,selectInput(
             NS(id,"xvar")
-            ,label = "X Variable"
+            ,label = "Group by ..."
             ,choices = select_choices
           )
           ,selectInput(
             NS(id,"yvar")
-            ,label = "y Variable"
+            ,label = "Color by ..."
             ,choices = select_choices
           )
         )

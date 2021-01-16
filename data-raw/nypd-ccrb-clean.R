@@ -5,9 +5,9 @@
 # TODO: Update App data source to match NYPD-CCRB-2020 Repo
 
 
-path_input <- "./data-raw/nypd-ccrb-cleaned.csv"
+path_input <- "./data-raw/nypd-ccrb-cleaned.rds"
 
-nypd_ccrb_cleaned <- readr::read_csv(path_input)
+nypd_ccrb_cleaned <- readr::read_rds(path_input)
 
 
 # ---- save-data ---------------------------------------------------------------

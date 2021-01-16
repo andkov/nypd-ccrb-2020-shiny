@@ -11,6 +11,9 @@ select_choices <- c(
   ,"Complainant Ethnicity"    = "complainant_ethnicity5"
   ,"Complainant Gender"       = "complainant_gender4"
   # ,"Complainant Age Incident" = "complainant_age_incident"
+  ,"Category of Complaint"    = "fado_type"
+  ,"Board Disposition"        = "disposition"
+  ,"Pentalty"                 = "penalty"
 )
 
 

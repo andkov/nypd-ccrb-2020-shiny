@@ -21,7 +21,7 @@ make_bi_bar_graph <- function(d, var1, var2,voption="plasma"){
   # browser()
 
   d1 <- d %>%
-    dplyr::group_by(.dots = c(var1, var2) )%>%
+    dplyr::group_by(.dots = unique(c(var1, var2)))%>%
     dplyr::summarize(
       n_people = n()
     ) %>%

@@ -8,8 +8,8 @@ select_choices <- c(
   ,"mos_ethnicity"  ="mos_ethnicity"
   ,"mos_gender"  ="mos_gender"
   ,"mos_age_incident"  ="mos_age_incident"
-  ,"complainant_ethnicity"  ="complainant_ethnicity"
-  ,"complainant_gender"  ="complainant_gender"
+  ,"complainant_ethnicity"  ="complainant_ethnicity5"
+  ,"complainant_gender"  ="complainant_gender4"
   ,"complainant_age_incident" = "complainant_age_incident"
 )
 

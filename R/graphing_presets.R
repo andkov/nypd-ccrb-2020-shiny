@@ -3,7 +3,7 @@
 ggplot2::theme_set(
   ggplot2::theme_bw(
   )+
-    theme(
-      strip.background = element_rect(fill="grey90", color = NA)
+    ggplot2::theme(
+      strip.background = ggplot2::element_rect(fill="grey90", color = NA)
     )
 )
